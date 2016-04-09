@@ -93,22 +93,6 @@ class Rating_model extends CI_Model {
     }
 
 
-
-
-    function rating_box() {
-        $this->db->limit(10);
-        $this->db->order_by('rating_ord', 'asc');
-        $this->db->where('rating_hide', 1);
-        $this->db->select("rating_name");
-        $result = $this->db->get('ci_news_rating');
-        return $result->result_array();
-    }
-
-    function getNumUsersAdmin() {
-        $query = $this->db->query("select * from ci_news_rating");
-        return $query->num_rows();
-    }
-
     /* This function delete categor of new from database. */
 
     function delete_user_rating($news_id,$user_id) {

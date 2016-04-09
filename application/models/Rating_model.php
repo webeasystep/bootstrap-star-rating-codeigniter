@@ -21,16 +21,6 @@ class Rating_model extends CI_Model {
         WHERE ne_id='$ne_id' GROUP BY ne_id")->row();
     }
 
-    function get_rate_numbers($item_id,$user_id) {
-        $rate_num = $this->db->query("select * from
- ci_news_rating LEFT JOIN ci_rating_counter ON ci_news_rating.nrt_id = ci_rating_counter.rtc_rate_id
- where nrt_item_id='$item_id' AND rtc_user_id = $user_id");
-        if ($rate_num->num_rows() > 0) {
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 
 
@@ -38,7 +28,7 @@ class Rating_model extends CI_Model {
  * This function check if user
     has rated specfic item or not
 */
-    function get_user_numrate($item_id,$userid) {
+    function get_rate_numbers($item_id,$userid) {
         $rate_num = $this->db->query("
         select * from ci_news_rating
          INNER JOIN ci_rating_counter ON rtc_rate_id = nrt_id
@@ -93,7 +83,7 @@ class Rating_model extends CI_Model {
     }
 
 
-    /* This function delete categor of new from database. */
+    /* This function delete ratings of new from all tables by $news_id and $user_id. */
 
     function delete_user_rating($news_id,$user_id) {
         $this->db->query("

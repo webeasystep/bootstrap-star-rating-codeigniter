@@ -52,9 +52,7 @@ class Rating extends Front_end
 
     }
 
-    function login(){
 
-    }
 
     function clear_user_rating(){
         $this->rating_model->delete_user_rating($this->news_id,$this->user_id);
